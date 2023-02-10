@@ -1,10 +1,16 @@
-<!-- this is a generic form page.  Best way to make a new form page is to 
-copy this one and then edit it. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurveyForm</title>
+</head>
+<body>
+    {% extends "base.html" %}
 
-{% extends "base.html" %}
-
-{% block body %}
-        <h1>Form Page Title</h1>
+    {% block body %}
+        <h1>Survey Form</h1>
 
         <!--List all errors in a group at the top-->
         {% for field in form.errors %}
@@ -28,5 +34,11 @@ copy this one and then edit it. -->
             {{form.submit()}}
         </form>
         
-{% endblock %}
-3
+    {% endblock %}
+    3
+</body>
+</html>
+<!--
+    Framework:
+    *mingus inputs*
+-->
