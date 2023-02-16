@@ -24,6 +24,51 @@
         <form method=post>
             {{ form.hidden_tag() }}
             
+            <h1>Questions:</h1>
+
+            <h2>Demographics:</h2>
+
+            <form action="" method="get">
+               
+                <h3>What is your age?</h3>
+                <label for="yes">What is your age?</label>
+                <input type="number" name="age_choice" id="demographic_data">
+                
+                <h3>How do you describe your gender?</h3>
+                <label for="yes">How do you describe your gender?</label>
+                <input type="text" name="gender_response" id="demographic_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+                
+                <h3>How do you describe your ethnicity?</h3>
+                <label for="yes">How do you describe your ethnicity?</label>
+                <input type="text" name="ethnicity_response" id="demographic_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+               
+            </form>
+
+            <h2>Now please answer the following questions about your language background.</h2>
+
+            <form action="" method="get">
+               
+                <h3>What languages are you fluent in (can you hold a conversation in)?</h3>
+                <label for="yes">What languages are you fluent in (can you hold a conversation in)?</label>
+                <input type="text" name="fluentlang_response" id="language_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+                
+                <h3>What languages are spoken in your home?</h3>
+                <label for="yes">What languages are spoken in your home?</label>
+                <input type="text" name="homelang_response" id="language_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+               
+                <h3>What languages have you learned in classes?</h3>
+                <label for="yes">HWhat languages have you learned in classes?</label>
+                <input type="text" name="classlang_response" id="language_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+                <h3>What languages do your parents speak (take your best guess)?</h3>
+                <input type="text" name="parentslang_response" id="language_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+            
+            </form>
             {{ form.field.label }} <br>
             {{ form.field(size=64) }}
             <!--List the errors for this field-->
@@ -40,5 +85,32 @@
 </html>
 <!--
     Framework:
-    *mingus inputs*
+    Actual Study:
+    (this ſection will repeat ſeveral times) ← figure this out later M
+
+    Participants will be shown an audio ſample:
+        50%:
+        Two different random languages (x and y) will be ſelected.
+        Participants will then be told the ſample is from one language and given the audio ſample from the other.
+        You will now liſten to an audio ſample from x:
+        [audio ſample y]
+        50%:
+        A random language will be ſelected
+        They will be told what language it is and be given the audio ſample in that language.
+
+
+    Now pleaſe liſten to an audio ſample from the language [language name].
+
+    [audio sample]
+
+    How familiar are you with this language? (ſlider 1—100)
+    I don’t know this language at all–I can ſpeak this language
+        
+    Participants will then rate the audio ſample on each of the following ſliders, 1—100:
+    Beautiful–Ugly
+    Melodic–Tuneleſs
+    Soft–Hard
+    Orderly–Chaotic
+    Sweet–Harsh
+
 -->
