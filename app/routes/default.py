@@ -9,3 +9,7 @@ def aboutus():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/')
+def homepage():
+    return render_template('homepage.html')
