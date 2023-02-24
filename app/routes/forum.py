@@ -15,7 +15,7 @@ import datetime as dt
 @app.route('/blog/list')
 @app.route('/blogs')
 # This means the user must be logged in to see this page
-@login_required
+# @login_required
 def blogList():
     # This retrieves all of the 'blogs' that are stored in MongoDB and places them in a
     # mongoengine object as a list of dictionaries name 'blogs'.
@@ -32,7 +32,7 @@ def blogList():
 # The angle brackets (<>) indicate a variable. 
 @app.route('/blog/<blogID>')
 # This route will only run if the user is logged in.
-@login_required
+# @login_required
 def blog(blogID):
     # retrieve the blog using the blogID
     thisBlog = Blog.objects.get(id=blogID)
@@ -51,7 +51,7 @@ def blog(blogID):
 # TODO add the ability for an administrator to delete blogs. 
 @app.route('/blog/delete/<blogID>')
 # Only run this route if the user is logged in.
-@login_required
+# @login_required
 def blogDelete(blogID):
     # retrieve the blog to be deleted using the blogID
     deleteBlog = Blog.objects.get(id=blogID)
@@ -79,7 +79,7 @@ def blogDelete(blogID):
 # in the route decorator.
 @app.route('/blog/new', methods=['GET', 'POST'])
 # This means the user must be logged in to see this page
-@login_required
+# @login_required
 # This is a function that is run when the user requests this route.
 def blogNew():
     # This gets the form object from the form.py classes that can be displayed on the template.
@@ -125,7 +125,7 @@ def blogNew():
 # that includes all the values of the original blog. Read and understand the new blog route 
 # before this one. 
 @app.route('/blog/edit/<blogID>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def blogEdit(blogID):
     editBlog = Blog.objects.get(id=blogID)
     # if the user that requested to edit this blog is not the author then deny them and
@@ -168,7 +168,7 @@ def blogEdit(blogID):
 # relationship is defined in the Blog and the Comment collections.
 
 @app.route('/comment/new/<blogID>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def commentNew(blogID):
     blog = Blog.objects.get(id=blogID)
     form = CommentForm()
@@ -183,7 +183,7 @@ def commentNew(blogID):
     return render_template('commentform.html',form=form,blog=blog)
 
 @app.route('/comment/edit/<commentID>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def commentEdit(commentID):
     editComment = Comment.objects.get(id=commentID)
     if current_user != editComment.author:
@@ -203,7 +203,7 @@ def commentEdit(commentID):
     return render_template('commentform.html',form=form,blog=blog)   
 
 @app.route('/comment/delete/<commentID>')
-@login_required
+# @login_required
 def commentDelete(commentID): 
     deleteComment = Comment.objects.get(id=commentID)
     deleteComment.delete()

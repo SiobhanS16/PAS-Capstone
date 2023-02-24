@@ -36,29 +36,33 @@ class User(UserMixin, Document):
         'ordering': ['lname','fname']
     }
     
-class Blog(Document):
-    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    subject = StringField()
-    content = StringField()
-    tag = StringField()
-    create_date = DateTimeField(default=dt.datetime.utcnow)
-    modify_date = DateTimeField()
+# class Blog(Document):
+#     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+#     subject = StringField()
+#     content = StringField()
+#     tag = StringField()
+#     create_date = DateTimeField(default=dt.datetime.utcnow)
+#     modify_date = DateTimeField()
 
-    meta = {
-        'ordering': ['-createdate']
-    }
+#     meta = {
+#         'ordering': ['-createdate']
+#     }
 
-class Comment(Document):
-    # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
-    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    blog = ReferenceField('Blog',reverse_delete_rule=CASCADE)
-    # This could be used to allow comments on comments
-    comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
-    # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
-    content = StringField()
-    create_date = DateTimeField(default=dt.datetime.utcnow)
-    modify_date = DateTimeField()
+# class Comment(Document):
+#     # Line 63 is a way to access all the information in Course and Teacher w/o storing it in this class
+#     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+#     blog = ReferenceField('Blog',reverse_delete_rule=CASCADE)
+#     # This could be used to allow comments on comments
+#     comment = ReferenceField('Comment',reverse_delete_rule=CASCADE)
+#     # Line 68 is where you store all the info you need but won't find in the Course and Teacher Object
+#     content = StringField()
+#     create_date = DateTimeField(default=dt.datetime.utcnow)
+#     modify_date = DateTimeField()
 
-    meta = {
-        'ordering': ['-createdate']
-    }
+#     meta = {
+#         'ordering': ['-createdate']
+#     }
+
+# class Survey(Survey):
+#     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+#     content = StringField()
