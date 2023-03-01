@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SurveyForm</title>
-</head>
-<body>
-    {% extends "base.html" %}
+{% extends "base.html" %}
 
     {% block body %}
         <h1>Survey Form</h1>
@@ -50,7 +41,7 @@
 
             <form action="" method="get">
                
-                <h3>What languages are you fluent in (can you hold a conversation in)?</h3>
+                <h3>What languages are you fluent in? (Can you hold a conversation in)</h3>
                 <label for="yes">What languages are you fluent in (can you hold a conversation in)?</label>
                 <input type="text" name="fluentlang_response" id="language_data">
                 <textarea name="name" id="" cols="40" rows="8"></textarea>
@@ -61,10 +52,11 @@
                 <textarea name="name" id="" cols="40" rows="8"></textarea>
                
                 <h3>What languages have you learned in classes?</h3>
-                <label for="yes">HWhat languages have you learned in classes?</label>
+                <label for="yes">What languages have you learned in classes?</label>
                 <input type="text" name="classlang_response" id="language_data">
                 <textarea name="name" id="" cols="40" rows="8"></textarea>
-                <h3>What languages do your parents speak (take your best guess)?</h3>
+
+                <h3>What languages do your parents speak? (Take your best guess)</h3>
                 <input type="text" name="parentslang_response" id="language_data">
                 <textarea name="name" id="" cols="40" rows="8"></textarea>
             
@@ -79,38 +71,4 @@
             {{form.submit()}}
         </form>
         
-    {% endblock %}
-    3
-</body>
-</html>
-<!--
-    Framework:
-    Actual Study:
-    (this ſection will repeat ſeveral times) ← figure this out later M
-
-    Participants will be shown an audio ſample:
-        50%:
-        Two different random languages (x and y) will be ſelected.
-        Participants will then be told the ſample is from one language and given the audio ſample from the other.
-        You will now liſten to an audio ſample from x:
-        [audio ſample y]
-        50%:
-        A random language will be ſelected
-        They will be told what language it is and be given the audio ſample in that language.
-
-
-    Now pleaſe liſten to an audio ſample from the language [language name].
-
-    [audio sample]
-
-    How familiar are you with this language? (ſlider 1—100)
-    I don’t know this language at all–I can ſpeak this language
-        
-    Participants will then rate the audio ſample on each of the following ſliders, 1—100:
-    Beautiful–Ugly
-    Melodic–Tuneleſs
-    Soft–Hard
-    Orderly–Chaotic
-    Sweet–Harsh
-
--->
+{% endblock %}
