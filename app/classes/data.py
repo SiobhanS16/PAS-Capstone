@@ -20,21 +20,21 @@ import jwt
 from time import time
 from bson.objectid import ObjectId
 
-class User(UserMixin, Document):
-    createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
-    gid = StringField(sparse=True, unique=True)
-    gname = StringField()
-    gprofile_pic = StringField()
-    username = StringField()
-    fname = StringField()
-    lname = StringField()
-    email = EmailField()
-    image = FileField()
-    prononuns = StringField()
+# class User(UserMixin, Document):
+#     createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
+#     gid = StringField(sparse=True, unique=True)
+#     gname = StringField()
+#     gprofile_pic = StringField()
+#     username = StringField()
+#     fname = StringField()
+#     lname = StringField()
+#     email = EmailField()
+#     image = FileField()
+#     prononuns = StringField()
 
-    meta = {
-        'ordering': ['lname','fname']
-    }
+#     meta = {
+#         'ordering': ['lname','fname']
+#     }
     
 # class Blog(Document):
 #     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
@@ -63,6 +63,6 @@ class User(UserMixin, Document):
 #         'ordering': ['-createdate']
 #     }
 
-# class Survey(Survey):
-#     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-#     content = StringField()
+class Survey(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    content = StringField()
