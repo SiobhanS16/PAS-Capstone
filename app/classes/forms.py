@@ -6,8 +6,8 @@ from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired
 from wtforms.fields.html5 import URLField
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField
-from wtforms import IntegerRangeField
+from wtforms import widgets, StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField
+from wtforms.fields.html5 import IntegerRangeField
 
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
@@ -26,11 +26,8 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Comment')
 
 class SurveyForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Comment', validators=[DataRequired()])
-    age = SelectField('Age', validators=[DataRequired()])
-    gender = TextAreaField('Gender', validators=[DataRequired()])
-    ethnicity = TextAreaField('Ethnicity', validators=[DataRequired()])
+    # subject = StringField('Subject', validators=[DataRequired()])
+    # content = TextAreaField('Comment', validators=[DataRequired()])
     fluentlang = TextAreaField('Fluent Languages', validators=[DataRequired()])
     homelang = TextAreaField('Home Languages', validators=[DataRequired()])
     classlang = TextAreaField('Class Languages', validators=[DataRequired()])
@@ -54,4 +51,7 @@ class SurveyForm(FlaskForm):
     softness = IntegerRangeField('Softness', validators=[DataRequired()])
     orderliness = IntegerRangeField('Orderliness', validators=[DataRequired()])
     sweetness = IntegerRangeField('Sweetness', validators=[DataRequired()])
+    age = SelectField('Age', validators=[DataRequired()])
+    gender = TextAreaField('Gender', validators=[DataRequired()])
+    ethnicity = TextAreaField('Ethnicity', validators=[DataRequired()])
     submit = SubmitField()

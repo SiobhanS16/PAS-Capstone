@@ -17,27 +17,7 @@
             
             <h1>Questions:</h1>
 
-            <h2>Demographics:</h2>
-
-            <form action="" method="get">
-               
-                <h3>What is your age?</h3>
-                <label for="yes">What is your age?</label>
-                <input type="number" name="age_choice" id="demographic_data">
-                
-                <h3>How do you describe your gender?</h3>
-                <label for="yes">How do you describe your gender?</label>
-                <input type="text" name="gender_response" id="demographic_data">
-                <textarea name="name" id="" cols="40" rows="8"></textarea>
-                
-                <h3>How do you describe your ethnicity?</h3>
-                <label for="yes">How do you describe your ethnicity?</label>
-                <input type="text" name="ethnicity_response" id="demographic_data">
-                <textarea name="name" id="" cols="40" rows="8"></textarea>
-               
-            </form>
-
-            <h2>Now please answer the following questions about your language background.</h2>
+            <h2>Please answer the following questions about your language background.</h2>
 
             <form action="" method="get">
                
@@ -61,13 +41,26 @@
                 <textarea name="name" id="" cols="40" rows="8"></textarea>
             
             </form>
-            {{ form.field.label }} <br>
-            {{ form.field(size=64) }}
-            <!--List the errors for this field-->
-            {% for error in form.field.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
 
+            <h2>Demographics:</h2>
+
+            <form action="" method="get">
+               
+                <h3>What is your age?</h3>
+                <label for="yes">What is your age?</label>
+                <input type="number" name="age_choice" id="demographic_data">
+                
+                <h3>How do you describe your gender?</h3>
+                <label for="yes">How do you describe your gender?</label>
+                <input type="text" name="gender_response" id="demographic_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+                
+                <h3>How do you describe your ethnicity?</h3>
+                <label for="yes">How do you describe your ethnicity?</label>
+                <input type="text" name="ethnicity_response" id="demographic_data">
+                <textarea name="name" id="" cols="40" rows="8"></textarea>
+               
+            </form>
             {{form.submit()}}
         </form>
         
