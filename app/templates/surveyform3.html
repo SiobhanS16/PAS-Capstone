@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+    {% block body %}
+        <h1>Welcome to our Phonaesthetic Sociolinguistics Study!</h1>
+
+        <!--List all errors in a group at the top-->
+        {% for field in form.errors %}
+            {% for error in form.errors[field] %}
+                <div class="alert alert-error">
+                    <strong>Error!</strong>{{field}}: {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        
+        <h2>Demographics:</h2>
+
+        <form action="" method="get">
+               
+                <h3>What is your age?</h3>
+                <input type="number" name="age_choice" id="demographic_data">
+                
+                <h3>How do you describe your gender?</h3>
+                {{form.gender()}}
+                
+                <h3>How do you describe your ethnicity?</h3>
+                {{form.ethnicity()}}
+               
+            </form>
+            {{form.submit()}}
+        </form>
+        
+{% endblock %}

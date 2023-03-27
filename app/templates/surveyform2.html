@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+    {% block body %}
+        <h1>Welcome to our Phonaesthetic Sociolinguistics Study!</h1>
+
+        <!--List all errors in a group at the top-->
+        {% for field in form.errors %}
+            {% for error in form.errors[field] %}
+                <div class="alert alert-error">
+                    <strong>Error!</strong>{{field}}: {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        
+        <h2>Demographics:</h2>
+
+        <form action="" method="get">
+               
+                
+               
+            </form>
+            {{form.submit()}}
+        </form>
+        
+{% endblock %}
