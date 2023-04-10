@@ -13,3 +13,11 @@ h3{
     font-size: small;
 }
 
+#submit{
+    background-color: rgb(142, 22, 198);
+    text-decoration-color: black;
+    border: 1px;
+    border-color: rgb(11, 11, 142);
+    border-width: 5px;
+    border-style: groove;
+}
