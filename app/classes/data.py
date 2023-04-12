@@ -14,12 +14,18 @@ from setuptools import SetuptoolsDeprecationWarning
 from app import app
 from flask import flash
 from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, IntField, ReferenceField, DateTimeField, BooleanField, CASCADE
+from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE
 from flask_mongoengine import Document
 import datetime as dt
 import jwt
 from time import time
 from bson.objectid import ObjectId
+
+
+from flask_wtf import FlaskForm
+from wtforms import widgets, StringField, SelectField, FileField
+from wtforms.fields.html5 import IntegerRangeField
+
 
 class User(UserMixin, Document):
     createdate = DateTimeField(defaultdefault=dt.datetime.utcnow)
@@ -67,4 +73,20 @@ class Comment(Document):
 class Survey(FlaskForm):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     content = StringField()
-    # do i have to add all of the individual questions here?
+    fluentlang = StringField()
+    homelang = StringField()
+    classlang = StringField()
+    parentlang = StringField()
+
+class Survey(FlaskForm):
+    familiarity = IntegerRangeField()
+    beauty = IntegerRangeField()
+    melody = IntegerRangeField()
+    softness = IntegerRangeField()
+    orderliness = IntegerRangeField()
+    sweetness = IntegerRangeField()
+
+class Survey(FlaskForm):
+    age = SelectField()
+    gender = StringField()
+    ethnicity = StringField()

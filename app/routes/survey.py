@@ -58,3 +58,4 @@ def surveyNew():
     # stored in the form object and are displayed on the form. take a look at blogform.html to 
     # see how that works.
     return render_template('surveyform.html',form=form)
+
