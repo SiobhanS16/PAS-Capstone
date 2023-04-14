@@ -26,8 +26,6 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Comment')
 
 class SurveyForm1(FlaskForm):
-    # subject = StringField('Subject', validators=[DataRequired()])
-    # content = TextAreaField('Comment', validators=[DataRequired()])
     fluentlang = TextAreaField('Fluent Languages', validators=[DataRequired()])
     homelang = TextAreaField('Home Languages', validators=[DataRequired()])
     classlang = TextAreaField('Class Languages', validators=[DataRequired()])

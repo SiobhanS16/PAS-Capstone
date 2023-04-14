@@ -70,23 +70,18 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
-class Survey(FlaskForm):
+class Survey(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    content = StringField()
     fluentlang = StringField()
     homelang = StringField()
     classlang = StringField()
     parentlang = StringField()
-
-class Survey(FlaskForm):
     familiarity = IntegerRangeField()
     beauty = IntegerRangeField()
     melody = IntegerRangeField()
     softness = IntegerRangeField()
     orderliness = IntegerRangeField()
     sweetness = IntegerRangeField()
-
-class Survey(FlaskForm):
     age = SelectField()
     gender = StringField()
     ethnicity = StringField()

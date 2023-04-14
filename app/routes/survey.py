@@ -10,6 +10,29 @@ from app.classes.data import Survey
 from app.classes.forms import SurveyForm1, SurveyForm2, SurveyForm3
 import datetime as dt
 
+sampleDict = {
+    "NW050": "Hausa", 
+    "NW049":"Tagalog", 
+    "NW051":"Xhosa", 
+    "NW037":"Luganda",
+    "NW034":"Armenian", 
+    "NW054":"Welsh",
+    "NW009":"Dutch",
+    "NW055":"Norwegian", 
+    "NW047":"Greek",
+    "NW015":"Urdu",
+    "NW064":"Farsi",
+    "NW056":"French",
+    "NW057":"Italian",
+    "NW052":"Russian",
+    "NW029":"Serbian",
+    "NW053":"Maidu",
+    "NW021":"Arabic",
+    "NW039":"Akan",
+    "NW024":"Finnish",
+    "NW035":"Estonian"
+    }
+
 # This route actually does two things depending on the state of the if statement 
 # 'if form.validate_on_submit()'. When the route is first called, the form has not 
 # been submitted yet so the if statement is False and the route renders the form.
@@ -36,11 +59,10 @@ def surveyNew1():
         newSurvey = Survey(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            subject = form.subject.data,
-            content = form.content.data,
-            tag = form.tag.data,
-            # This sets the modifydate to the current datetime.
-            modify_date = dt.datetime.utcnow
+            fluentlang = form.fluentlang.data,
+            homelang = form.homelang.data,
+            classlang = form.classlang.data,
+            parentlang = form.parentlang.data
         )
         newSurvey.save()
         newSurvey.reload()
@@ -77,11 +99,12 @@ def surveyNew2():
         newSurvey = Survey(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            subject = form.subject.data,
-            content = form.content.data,
-            tag = form.tag.data,
-            # This sets the modifydate to the current datetime.
-            modify_date = dt.datetime.utcnow
+            familiarity = form.familiarity.data,
+            beauty = form.beauty.data,
+            melody = form.melody.data,
+            softness = form.softness.data,
+            orderliness = form.orderliness.data,
+            sweetness = form.sweetness.data
         )
         newSurvey.save()
         newSurvey.reload()
@@ -118,11 +141,9 @@ def surveyNew3():
         newSurvey = Survey(
             # the left side is the name of the field from the data table
             # the right side is the data the user entered which is held in the form object.
-            subject = form.subject.data,
-            content = form.content.data,
-            tag = form.tag.data,
-            # This sets the modifydate to the current datetime.
-            modify_date = dt.datetime.utcnow
+            age = form.age.data,
+            gender = form.gender.data,
+            ethnicity = form.ethnicity.data
         )
         newSurvey.save()
         newSurvey.reload()
