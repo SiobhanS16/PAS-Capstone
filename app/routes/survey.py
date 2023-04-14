@@ -42,6 +42,10 @@ def surveyNew():
             # This sets the modifydate to the current datetime.
             modify_date = dt.datetime.utcnow
         )
+        newSurvey.save()
+        newSurvey.reload()
+        if form.audio.data:
+            newSurvey.audio.put(form.audio.data, content_type = 'audio/mpeg')
         # This is a method that saves the data to the mongoDB database.
         newSurvey.save()
 
@@ -58,4 +62,3 @@ def surveyNew():
     # stored in the form object and are displayed on the form. take a look at blogform.html to 
     # see how that works.
     return render_template('surveyform.html',form=form)
-

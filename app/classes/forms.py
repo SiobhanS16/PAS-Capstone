@@ -25,7 +25,7 @@ class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
 
-class SurveyForm(FlaskForm):
+class SurveyForm1(FlaskForm):
     # subject = StringField('Subject', validators=[DataRequired()])
     # content = TextAreaField('Comment', validators=[DataRequired()])
     fluentlang = TextAreaField('Fluent Languages', validators=[DataRequired()])
@@ -34,7 +34,7 @@ class SurveyForm(FlaskForm):
     parentlang = TextAreaField('Parent Languages', validators=[DataRequired()])
     submit = SubmitField()
 
-class SurveyForm(FlaskForm):
+class SurveyForm2(FlaskForm):
     familiarity = IntegerRangeField('Familiarity', validators=[DataRequired()])
     beauty = IntegerRangeField('Beauty', validators=[DataRequired()])
     melody = IntegerRangeField('Melody', validators=[DataRequired()])
@@ -43,7 +43,7 @@ class SurveyForm(FlaskForm):
     sweetness = IntegerRangeField('Sweetness', validators=[DataRequired()])
     submit = SubmitField()
 
-class SurveyForm(FlaskForm):
+class SurveyForm3(FlaskForm):
     age = SelectField('Age', validators=[DataRequired()])
     gender = TextAreaField('Gender', validators=[DataRequired()])
     ethnicity = TextAreaField('Ethnicity', validators=[DataRequired()])
