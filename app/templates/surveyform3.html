@@ -11,8 +11,8 @@
                 </div>
             {% endfor %}
         {% endfor %}
-        
-        <form method="get">
+
+        <form method=post>
 
             <h2>Demographics:</h2>
                
@@ -25,7 +25,6 @@
                 <h3>How do you describe your ethnicity?</h3>
                 {{form.ethnicity()}}
                
-            </form>
             {{form.submit()}}
         </form>
         
