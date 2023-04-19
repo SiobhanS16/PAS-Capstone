@@ -16,19 +16,64 @@
         <!-- from random import math.random -->
         <form method=post>
 
-            <!-- Participants will be shown an audio sample:
-             	50%:
-             	Two different random languages (x and y) will be selected.
-             	Participants will then be told the sample is from one language and given the audio sample from the other.
-            You will now listen to an audio sample from x:
-            	[audio sample y]
-            
-            	50%:
-            	A random language will be selected
-            	They will be told what language it is and be given the audio sample in that language.
-            Now please listen to an audio sample from the language [language name].
+            <!-- (this section will repeat several times) ← figure this out later M
+
+            Participants will be shown an audio sample:
+                50%:
+                Two different random languages (x and y) will be selected.
+                Participants will then be told the sample is from one language and given the audio sample from the other.
+                You will now listen to an audio sample from x:
+                [audio sample y]
+                50%:
+                A random language will be selected
+                They will be told what language it is and be given the audio sample in that language.
+
+
+            50%: Listen to the audio sample from language x
+
                 [audio sample]
+
+            50%: Listen to the following audio sample
+
+
+            Now please listen to an audio sample from the language [language name].
+
+            [audio sample]
+
+                
+            Participants will then rate the audio sample on each of the following sliders, 1—100:
+            Beautiful–Ugly (Beauty)
+            Melodic–Tuneless (Melody)
+            Soft–Hard (Softness)
+            Orderly–Chaotic (Orderliness)
+            Sweet–Harsh (Sweetness)
+
+            How familiar are you with this language? (slider 1—100)
+            I don’t know this language at all–I can speak this language
+
             -->
+
+                    <h3>Participants will then rate the audio sample on each of the following sliders, 1—100:</h3>
+
+               <div class="slidecontainer1">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              </div>
+
+              <div class="slidecontainer2">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              </div>
+
+              <div class="slidecontainer3">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              </div>
+
+              <div class="slidecontainer4">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              </div>
+
+              <div class="slidecontainer5">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              </div>
             {{form.submit()}}
         </form>
         
