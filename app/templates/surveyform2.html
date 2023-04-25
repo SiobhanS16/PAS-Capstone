@@ -2,6 +2,12 @@
 
     {% block body %}
         <h1>Welcome to our Phonaesthetic Sociolinguistics Study!</h1>
+
+        <audio controls>
+            <source src="/static/{{randLang[0]}}.mp3" type="audio/mpeg">
+        </audio>
+        <br>
+        <h3>{{randLang[1]}}</h3>
         <!-- from app.classes.survey import sampleDict -->
         <!--List all errors in a group at the top-->
         <link href="../html/surveyform3.html" rel="stylesheet">
@@ -56,7 +62,7 @@
 
                     <h3>Participants will then rate the audio sample on each of the following sliders, 1—100:</h3>
 
-               <div class="slidecontainer1">
+                <div class="slidecontainer1">
                 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
               </div>
 

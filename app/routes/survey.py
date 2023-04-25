@@ -10,29 +10,30 @@ from flask import render_template, flash, redirect, url_for
 from app.classes.data import Survey
 from app.classes.forms import SurveyForm1, SurveyForm2, SurveyForm3
 import datetime as dt
+import random
 
-sampleDict = {
-    "NW050":"Hausa", 
-    "NW049":"Tagalog", 
-    "NW051":"Xhosa", 
-    "NW037":"Luganda",
-    "NW034":"Armenian", 
-    "NW054":"Welsh",
-    "NW009":"Dutch",
-    "NW055":"Norwegian", 
-    "NW047":"Greek",
-    "NW015":"Urdu",
-    "NW064":"Farsi",
-    "NW056":"French",
-    "NW057":"Italian",
-    "NW052":"Russian",
-    "NW029":"Serbian",
-    "NW053":"Maidu",
-    "NW021":"Arabic",
-    "NW039":"Akan",
-    "NW024":"Finnish",
-    "NW035":"Estonian"
-    }
+sampleList = [
+    ["NW050","Hausa"], 
+    ["NW049","Tagalog"], 
+    ["NW051","Xhosa"], 
+    ["NW037","Luganda"],
+    ["NW034","Armenian"], 
+    ["NW054","Welsh"],
+    ["NW009","Dutch"],
+    ["NW055","Norwegian"], 
+    ["NW047","Greek"],
+    ["NW015","Urdu"],
+    ["NW064","Farsi"],
+    ["NW056","French"],
+    ["NW057","Italian"],
+    ["NW052","Russian"],
+    ["NW029","Serbian"],
+    ["NW053","Maidu"],
+    ["NW021","Arabic"],
+    ["NW039","Akan"],
+    ["NW024","Finnish"],
+    ["NW035","Estonian"]
+]
 
 
 @app.route('/survey/new', methods=['GET', 'POST'])
@@ -59,6 +60,7 @@ def surveyNew1():
 def surveyNew2(sid):
     form = SurveyForm2()
     editSurvey = Survey.objects.get(id=sid)
+    randLang = sampleList[random.randint(0,len(sampleList)-1)]
 
     if form.validate_on_submit():
  
@@ -73,7 +75,7 @@ def surveyNew2(sid):
 
         return redirect(url_for('surveyNew3',sid=editSurvey.id))
 
-    return render_template('surveyform2.html',form=form)
+    return render_template('surveyform2.html',form=form,randLang=randLang)
 
 @app.route('/survey3/new/<sid>', methods=['GET', 'POST'])
 def surveyNew3(sid):
