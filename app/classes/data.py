@@ -58,7 +58,7 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
-class Survey1(Document):
+class Survey(Document):
     fluentlang = StringField()
     homelang = StringField()
     classlang = StringField()
