@@ -1,6 +1,3 @@
-# This file is where data entry forms are created. Forms are placed on templates 
-# and users fill them out.  Each form is an instance of a class. Forms are managed by the 
-# Flask-WTForms library.
 
 from flask_wtf import FlaskForm
 import mongoengine.errors
