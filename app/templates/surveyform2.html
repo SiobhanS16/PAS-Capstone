@@ -3,11 +3,6 @@
     {% block body %}
         <h1>Welcome to our Phonaesthetic Sociolinguistics Study!</h1>
 
-        <audio controls>
-            <source src="/static/mp3s/{{randLang[0]}}.mp3" type="audio/mpeg">
-        </audio>
-        <br>
-        <h3>{{randLang[1]}}</h3>
         <!-- from app.classes.survey import sampleDict -->
         <!--List all errors in a group at the top-->
         <link href="../html/surveyform3.html" rel="stylesheet">
@@ -19,7 +14,6 @@
             {% endfor %}
         {% endfor %}
         
-        <h2>Demographics:</h2>
         <!-- from random import math.random -->
         <form method=post>
 
@@ -61,26 +55,42 @@
             -->
 
                     <h3>Participants will then rate the audio sample on each of the following sliders, 1—100:</h3>
+                    <br>
+                    <div class="form-group text-center">
+                        <h2>
+                            {{randLang[1]}}
+                        </h2>
 
-                <div class="slidecontainer1">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              </div>
+                        <audio controls>
+                            <source src="/static/mp3s/{{randLang[0]}}.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <br>
 
-              <div class="slidecontainer2">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              </div>
-
-              <div class="slidecontainer3">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              </div>
-
-              <div class="slidecontainer4">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              </div>
-
-              <div class="slidecontainer5">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              </div>
+                    <div class="form-group mb-3">
+                        <h3 class="text-center">{{form.familiarity.label}}</h3>
+                        {{form.familiarity(min=0,max=100,class="form-control border-dark")}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <h3 class="text-center">{{form.beauty.label}}</h3>
+                        {{form.beauty(min=0,max=100,class="form-control border-dark")}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <h3 class="text-center">{{form.melody.label}}</h3>
+                        {{form.melody(min=0,max=100,class="form-control border-dark")}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <h3 class="text-center">{{form.orderliness.label}}</h3>
+                        {{form.orderliness(min=0,max=100,class="form-control border-dark")}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <h3 class="text-center">{{form.sweetness.label}}</h3>
+                        {{form.sweetness(min=0,max=100,class="form-control border-dark")}}
+                    </div>
+                    <div class="form-group mb-3">
+                        <h3 class="text-center">{{form.softness.label}}</h3>
+                        {{form.softness(min=0,max=100,class="form-control border-dark")}}
+                    </div>
             {{form.submit()}}
         </form>
         
