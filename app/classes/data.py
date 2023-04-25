@@ -58,8 +58,7 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
-class Survey(Document):
-    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+class Survey1(Document):
     fluentlang = StringField()
     homelang = StringField()
     classlang = StringField()
@@ -73,3 +72,4 @@ class Survey(Document):
     age = IntField()
     gender = StringField()
     ethnicity = StringField()
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
