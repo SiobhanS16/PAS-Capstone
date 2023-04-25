@@ -60,38 +60,104 @@
                         <h2>
                             {{randLang[1]}}
                         </h2>
-
                         <audio controls>
                             <source src="/static/mp3s/{{randLang[0]}}.mp3" type="audio/mpeg">
                         </audio>
                     </div>
                     <br>
-
                     <div class="form-group mb-3">
                         <h3 class="text-center">{{form.familiarity.label}}</h3>
-                        {{form.familiarity(min=0,max=100,class="form-control border-dark")}}
+                        {{form.familiarity(min=0,max=100,class="form-control border-dark",oninput="outputFAUpdate(value)")}}
+                        <div class="container text-center">
+                            <h5>
+                                <output for="fa" id="fam">
+                                    {{ form.familiarity.data }}</h5>
+                                </output>
+                            </h5>
+                        </div>
                     </div>
+
                     <div class="form-group mb-3">
                         <h3 class="text-center">{{form.beauty.label}}</h3>
-                        {{form.beauty(min=0,max=100,class="form-control border-dark")}}
+                        {{form.beauty(min=0,max=100,class="form-control border-dark",oninput="outputBEUpdate(value)")}}
+                        <div class="container text-center">
+                            <h5>
+                                <output for="be" id="bea">
+                                    {{ form.beauty.data }}</h5>
+                                </output>
+                            </h5>
+                        </div>
                     </div>
+
                     <div class="form-group mb-3">
                         <h3 class="text-center">{{form.melody.label}}</h3>
-                        {{form.melody(min=0,max=100,class="form-control border-dark")}}
+                        {{form.melody(min=0,max=100,class="form-control border-dark",oninput="outputMEUpdate(value)")}}
+                        <div class="container text-center">
+                            <h5>
+                                <output for="me" id="mel">
+                                    {{ form.melody.data }}</h5>
+                                </output>
+                            </h5>
+                        </div>
                     </div>
+
                     <div class="form-group mb-3">
                         <h3 class="text-center">{{form.orderliness.label}}</h3>
-                        {{form.orderliness(min=0,max=100,class="form-control border-dark")}}
+                        {{form.orderliness(min=0,max=100,class="form-control border-dark",oninput="outputORUpdate(value)")}}
+                        <div class="container text-center">
+                            <h5>
+                                <output for="or" id="ord">
+                                    {{ form.orderliness.data }}</h5>
+                                </output>
+                            </h5>
+                        </div>
                     </div>
+
                     <div class="form-group mb-3">
                         <h3 class="text-center">{{form.sweetness.label}}</h3>
-                        {{form.sweetness(min=0,max=100,class="form-control border-dark")}}
+                        {{form.sweetness(min=0,max=100,class="form-control border-dark",oninput="outputSWUpdate(value)")}}
+                        <div class="container text-center">
+                            <h5>
+                                <output for="sw" id="swe">
+                                    {{ form.sweetness.data }}</h5>
+                                </output>
+                            </h5>
+                        </div>
                     </div>
+                    
                     <div class="form-group mb-3">
                         <h3 class="text-center">{{form.softness.label}}</h3>
-                        {{form.softness(min=0,max=100,class="form-control border-dark")}}
+                        {{form.softness(min=0,max=100,class="form-control border-dark",oninput="outputSOUpdate(value)")}}
+                        <div class="container text-center">
+                            <h5>
+                                <output for="so" id="sof">
+                                    {{ form.softness.data }}</h5>
+                                </output>
+                            </h5>
+                        </div>
                     </div>
             {{form.submit()}}
         </form>
+
+<script>
+    function outputFAUpdate(fa) {
+        document.querySelector('#fam').value = fa;
+    }
+    function outputBEUpdate(be) {
+        document.querySelector('#bea').value = be;
+    }
+    function outputMEUpdate(me) {
+        document.querySelector('#mel').value = me;
+    }
+    function outputORUpdate(or) {
+        document.querySelector('#ord').value = or;
+    }
+    function outputSWUpdate(sw) {
+        document.querySelector('#swe').value = sw;
+    }
+    function outputSOUpdate(so) {
+        document.querySelector('#sof').value = so;
+    }
+</script>
         
 {% endblock %}

@@ -74,6 +74,12 @@ def surveyNew2(sid):
             )
 
         return redirect(url_for('surveyNew3',sid=editSurvey.id))
+    form.familiarity.data = 50
+    form.beauty.data = 50
+    form.melody.data = 50
+    form.softness.data = 50
+    form.orderliness.data = 50
+    form.sweetness.data = 50
 
     return render_template('surveyform2.html',form=form,randLang=randLang)
 
