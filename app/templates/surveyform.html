@@ -19,32 +19,33 @@
             <h1>Questions:</h1>
 
             <h2>Please answer the following questions about your language background.</h2>
+            Hold the ctrl key and click to pick more than one.
 
                <div class="row">
                 <div clas="col">
                     <h3>What languages are you fluent in? (Can you hold a conversation in)</h3>
-                    {{form.fluentlang()}}
+                    {{form.fluentlang(size=8)}}
                 </div>
                </div>
                 
                <div class="row">
                 <div clas="col">
                     <h3>What languages are spoken in your home?</h3>
-                    {{form.homelang()}}
+                    {{form.homelang(size=8)}}
                 </div>
                </div>
                
                <div class="row">
                 <div clas="col">
                     <h3>What languages have you learned in classes?</h3>
-                    {{form.classlang()}}
+                    {{form.classlang(size=8)}}
                 </div>
                </div>
 
                <div class="row">
                 <div clas="col">
                     <h3>What languages do your parents speak? (Take your best guess)</h3>
-                    {{form.parentlang()}}
+                    {{form.parentlang(size=8)}}
                 </div>
                </div>
             {{form.submit()}}

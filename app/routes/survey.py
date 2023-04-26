@@ -46,6 +46,10 @@ def surveyNew1():
     form = SurveyForm1()
 
     if form.validate_on_submit():
+        print(form.fluentlang.data)
+        print(form.homelang.data)
+        print(form.classlang.data)
+        print(form.parentlang.data)
 
         newSurvey = Survey(
             fluentlang = form.fluentlang.data,

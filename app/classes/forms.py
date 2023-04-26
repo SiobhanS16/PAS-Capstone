@@ -3,8 +3,10 @@ from flask_wtf import FlaskForm
 import mongoengine.errors
 from wtforms.validators import URL, Email, DataRequired
 from wtforms.fields.html5 import URLField
-from wtforms import widgets, StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField
+from wtforms import widgets, StringField, SubmitField, TextAreaField, IntegerField, SelectField, FileField, BooleanField, SelectMultipleField
 from wtforms.fields.html5 import IntegerRangeField
+
+langChoices = [('English','English'),('Russian','Russian'),('Spanish','Spanish'),('German','German'),('French','French'),('Japanese','Japanese'),('Turkish','Turkish'),('Portuguese','Portuguese'),('Italian','Italian'),('Persian','Persian'),('Dutch, Flemish','Dutch, Flemish'),('Chinese','Chinese'),('Polish','Polish'),('Vietnamese','Vietnamese'),('Arabic','Arabic'),('Indonesian','Indonesian'),('Korean','Korean'),('Czech','Czech'),('Ukrainian','Ukrainian'),('Greek','Greek'),('Hebrew','Hebrew'),('Swedish','Swedish'),('Thai','Thai'),('Romanian','Romanian'),('Hungarian','Hungarian'),('Danish','Danish'),('Slovak','Slovak'),('Finnish','Finnish'),('Bulgarian','Bulgarian'),('Serbian','Serbian'),('Norwegian (Bokmål)','Norwegian (Bokmål)'),('Croatian','Croatian'),('Lithuanian','Lithuanian'),('Slovenian','Slovenian'),('Catalan','Catalan'),('Norwegian','Norwegian'),('Estonian','Estonian'),('Latvian','Latvian'),('Hindi','Hindi'),('Tamil','Tamil')]
 
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
@@ -23,10 +25,10 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Comment')
 
 class SurveyForm1(FlaskForm):
-    fluentlang = TextAreaField('Fluent Languages', validators=[DataRequired()])
-    homelang = TextAreaField('Home Languages', validators=[DataRequired()])
-    classlang = TextAreaField('Class Languages', validators=[DataRequired()])
-    parentlang = TextAreaField('Parent Languages', validators=[DataRequired()])
+    fluentlang = SelectMultipleField('Fluent Languages', choices=langChoices, validators=[DataRequired()])
+    homelang = SelectMultipleField('Home Languages', choices=langChoices, validators=[DataRequired()])
+    classlang = SelectMultipleField('Class Languages', choices=langChoices, validators=[DataRequired()])
+    parentlang = SelectMultipleField('Parent Languages', choices=langChoices, validators=[DataRequired()])
     submit = SubmitField()
 
 class SurveyForm2(FlaskForm):
