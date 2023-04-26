@@ -13,7 +13,7 @@ import datetime as dt
 import random
 import copy
 
-numLangs=2
+numLangs=10
 
 sampleList = [
     ["NW050","Hausa"], 
@@ -46,10 +46,6 @@ def surveyNew1():
     form = SurveyForm1()
 
     if form.validate_on_submit():
-        print(form.fluentlang.data)
-        print(form.homelang.data)
-        print(form.classlang.data)
-        print(form.parentlang.data)
 
         newSurvey = Survey(
             fluentlang = form.fluentlang.data,
@@ -59,13 +55,15 @@ def surveyNew1():
         )
         newSurvey.save()
 
-        return redirect(url_for('surveyNew2',sid=newSurvey.id))
+        hide = random.randint(0,1)
+
+        return redirect(url_for('surveyNew2',sid=newSurvey.id,hide=hide,num=1))
 
     return render_template('surveyform.html',form=form)
 
-@app.route('/survey2/new/<sid>/<num>', methods=['GET', 'POST'])
-@app.route('/survey2/new/<sid>', methods=['GET', 'POST'])
-def surveyNew2(sid,num=1):
+@app.route('/survey2/new/<sid>/<hide>/<num>', methods=['GET', 'POST'])
+def surveyNew2(sid,hide,num):
+    hide = int(hide)
     num = int(num)
     form = SurveyForm2()
 
@@ -86,12 +84,14 @@ def surveyNew2(sid,num=1):
             softness = form.softness.data,
             orderliness = form.orderliness.data,
             sweetness = form.sweetness.data,
-            lang=randLang[1]
+            lang=randLang[1],
+            hide = hide
             )
         editSurvey.save()
 
         if num < numLangs:
-            return redirect(url_for('surveyNew2',sid=sid,num=num+1))
+            hide = random.randint(0,1)
+            return redirect(url_for('surveyNew2',sid=sid,hide=hide,num=num+1))
         else:
             return redirect(url_for('surveyNew3',sid=editSurvey.id))
     
@@ -102,7 +102,7 @@ def surveyNew2(sid,num=1):
     form.orderliness.data = 50
     form.sweetness.data = 50
 
-    return render_template('surveyform2.html',form=form,randLang=randLang)
+    return render_template('surveyform2.html',form=form,randLang=randLang,hide=hide)
 
 @app.route('/survey3/new/<sid>', methods=['GET', 'POST'])
 def surveyNew3(sid):

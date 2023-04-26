@@ -7,7 +7,7 @@
 # from app import app
 # from flask import flash
 from flask_login import UserMixin
-from mongoengine import ListField, ObjectIdField, IntField, FileField, EmailField, StringField, ReferenceField, DateTimeField, EmbeddedDocument, EmbeddedDocumentListField, CASCADE
+from mongoengine import BooleanField, ListField, ObjectIdField, IntField, FileField, EmailField, StringField, ReferenceField, DateTimeField, EmbeddedDocument, EmbeddedDocumentListField, CASCADE
 from flask_mongoengine import Document
 import datetime as dt
 # import jwt
@@ -61,7 +61,7 @@ class Comment(Document):
 class SurveyLangs(EmbeddedDocument):
     oid = ObjectIdField(default=ObjectId())
     lang = StringField()
-    langx = StringField()
+    hide = BooleanField()
     familiarity = IntField()
     beauty = IntField()
     melody = IntField()
@@ -70,10 +70,10 @@ class SurveyLangs(EmbeddedDocument):
     sweetness = IntField()
 
 class Survey(Document):
-    fluentlang = ListField()
-    homelang = ListField()
-    classlang = ListField()
-    parentlang = ListField()
+    fluentlang = StringField()
+    homelang = StringField()
+    classlang = StringField()
+    parentlang = StringField()
     langs = EmbeddedDocumentListField('SurveyLangs')
     age = IntField()
     gender = StringField()

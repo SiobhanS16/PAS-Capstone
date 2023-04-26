@@ -25,10 +25,10 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Comment')
 
 class SurveyForm1(FlaskForm):
-    fluentlang = SelectMultipleField('Fluent Languages', choices=langChoices, validators=[DataRequired()])
-    homelang = SelectMultipleField('Home Languages', choices=langChoices, validators=[DataRequired()])
-    classlang = SelectMultipleField('Class Languages', choices=langChoices, validators=[DataRequired()])
-    parentlang = SelectMultipleField('Parent Languages', choices=langChoices, validators=[DataRequired()])
+    fluentlang = TextAreaField('Fluent Languages', validators=[DataRequired()])
+    homelang = TextAreaField('Home Languages', validators=[DataRequired()])
+    classlang = TextAreaField('Class Languages', validators=[DataRequired()])
+    parentlang = TextAreaField('Parent Languages', validators=[DataRequired()])
     submit = SubmitField()
 
 class SurveyForm2(FlaskForm):

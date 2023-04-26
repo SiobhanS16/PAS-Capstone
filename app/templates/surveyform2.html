@@ -58,9 +58,11 @@
                     <h3>Participants will then rate the audio sample on each of the following sliders, 1—100:</h3>
                     <br>
                     <div class="form-group text-center">
+                        {% if not hide %}
                         <h1>
                             {{randLang[1]}}
                         </h1>
+                        {% endif %}
                         <audio controls>
                             <source src="/static/mp3s/{{randLang[0]}}.mp3" type="audio/mpeg">
                         </audio>
