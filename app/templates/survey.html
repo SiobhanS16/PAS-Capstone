@@ -1,0 +1,19 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for field in survey %}
+    {% if field == 'langs' %}
+        {% for langObj in survey.langs %}
+            {% for field in langObj %}
+                {{field}}: {{langObj[field]}} <br>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        {{field}}: {{survey[field]}} <br>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

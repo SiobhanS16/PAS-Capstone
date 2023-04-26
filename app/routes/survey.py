@@ -6,11 +6,14 @@ from app import app
 import mongoengine.errors
 from flask_login.utils import login_required
 from flask_login import current_user
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, session
 from app.classes.data import Survey
 from app.classes.forms import SurveyForm1, SurveyForm2, SurveyForm3
 import datetime as dt
 import random
+import copy
+
+numLangs=2
 
 sampleList = [
     ["NW050","Hausa"], 
@@ -56,24 +59,38 @@ def surveyNew1():
 
     return render_template('surveyform.html',form=form)
 
+@app.route('/survey2/new/<sid>/<num>', methods=['GET', 'POST'])
 @app.route('/survey2/new/<sid>', methods=['GET', 'POST'])
-def surveyNew2(sid):
+def surveyNew2(sid,num=1):
+    num = int(num)
     form = SurveyForm2()
+
     editSurvey = Survey.objects.get(id=sid)
-    randLang = sampleList[random.randint(0,len(sampleList)-1)]
+
+    if num == 1:
+        session['langs'] = copy.deepcopy(sampleList)
+    randNum = random.randint(0,len(session['langs'])-1)
+    randLang = session['langs'][randNum]
+    session['langs'].remove(randLang)
 
     if form.validate_on_submit():
- 
-        editSurvey.update(
+
+        editSurvey.langs.create(
             familiarity = form.familiarity.data,
             beauty = form.beauty.data,
             melody = form.melody.data,
             softness = form.softness.data,
             orderliness = form.orderliness.data,
-            sweetness = form.sweetness.data
+            sweetness = form.sweetness.data,
+            lang=randLang[1]
             )
+        editSurvey.save()
 
-        return redirect(url_for('surveyNew3',sid=editSurvey.id))
+        if num < numLangs:
+            return redirect(url_for('surveyNew2',sid=sid,num=num+1))
+        else:
+            return redirect(url_for('surveyNew3',sid=editSurvey.id))
+    
     form.familiarity.data = 50
     form.beauty.data = 50
     form.melody.data = 50
@@ -96,6 +113,11 @@ def surveyNew3(sid):
             ethnicity = form.ethnicity.data
         )
 
-        return redirect(url_for('survey',surveyID=editSurvey.id))
+        return redirect(url_for('survey',sid=editSurvey.id))
 
     return render_template('surveyform3.html',form=form)
+
+@app.route('/survey/<sid>')
+def survey(sid):
+    thisSurvey = Survey.objects.get(id=sid)
+    return render_template('survey.html',survey=thisSurvey)

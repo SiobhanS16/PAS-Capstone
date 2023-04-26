@@ -39,7 +39,7 @@ class SurveyForm2(FlaskForm):
     submit = SubmitField()
 
 class SurveyForm3(FlaskForm):
-    age = SelectField('Age', validators=[DataRequired()])
+    age = IntegerField('Age', validators=[DataRequired()])
     gender = TextAreaField('Gender', validators=[DataRequired()])
     ethnicity = TextAreaField('Ethnicity', validators=[DataRequired()])
     submit = SubmitField()

@@ -16,6 +16,7 @@
         
         <!-- from random import math.random -->
         <form method=post>
+            {{ form.hidden_tag() }}
 
             <!-- (this section will repeat several times) ← figure this out later M
 
@@ -57,9 +58,9 @@
                     <h3>Participants will then rate the audio sample on each of the following sliders, 1—100:</h3>
                     <br>
                     <div class="form-group text-center">
-                        <h2>
+                        <h1>
                             {{randLang[1]}}
-                        </h2>
+                        </h1>
                         <audio controls>
                             <source src="/static/mp3s/{{randLang[0]}}.mp3" type="audio/mpeg">
                         </audio>

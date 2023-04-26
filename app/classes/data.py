@@ -7,12 +7,12 @@
 # from app import app
 # from flask import flash
 from flask_login import UserMixin
-from mongoengine import IntField, FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE
+from mongoengine import ObjectIdField, IntField, FileField, EmailField, StringField, ReferenceField, DateTimeField, EmbeddedDocument, EmbeddedDocumentListField, CASCADE
 from flask_mongoengine import Document
 import datetime as dt
 # import jwt
 # from time import time
-# from bson.objectid import ObjectId
+from bson.objectid import ObjectId
 
 
 class User(UserMixin, Document):
@@ -58,18 +58,25 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
-class Survey(Document):
-    fluentlang = StringField()
-    homelang = StringField()
-    classlang = StringField()
-    parentlang = StringField()
+class SurveyLangs(EmbeddedDocument):
+    oid = ObjectIdField(default=ObjectId())
+    lang = StringField()
+    langx = StringField()
     familiarity = IntField()
     beauty = IntField()
     melody = IntField()
     softness = IntField()
     orderliness = IntField()
     sweetness = IntField()
+
+class Survey(Document):
+    fluentlang = StringField()
+    homelang = StringField()
+    classlang = StringField()
+    parentlang = StringField()
+    langs = EmbeddedDocumentListField('SurveyLangs')
     age = IntField()
     gender = StringField()
     ethnicity = StringField()
+    createdate = DateTimeField()
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
